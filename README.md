@@ -2,7 +2,7 @@
 A simple calculator using Java 17, SpringBoot and Maven
 
 ## Build command
-- Clone the repository in our computer
+- Clone the repository on the computer
 - run maven build using **mvn clean install** or **mvn install** command
 - Build Success message is displayed
 
