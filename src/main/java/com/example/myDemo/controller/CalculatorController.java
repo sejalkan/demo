@@ -17,6 +17,11 @@ public class CalculatorController {
         this.calculatorService = calculatorService;
     }
 
+    // Helper method to save a calculation
+    private Calculation saveCalculation(String operation, double result) {
+        return calculatorService.saveCalculation(operation, result);
+    }
+
     //Test request to check connection
     @PostMapping("/resource")
     public String handlePostRequest() {
@@ -24,39 +29,35 @@ public class CalculatorController {
     }
 
     // POST request to add numbers
-    @PostMapping(value = "/add")
-    public Calculation addNumbers(@RequestBody Calculation calculation){
-        double result = calculation.getOperand1() + calculation.getOperand2();
-        calculation.setResult(result);
-        return calculatorService.saveCalculation(calculation);
+    @PostMapping("/add")
+    public Calculation addNumbers(@RequestParam double a, @RequestParam double b) {
+        double result = a + b;
+        return saveCalculation(a + " + " + b, result);
     }
 
     // POST request to subtract numbers
     @PostMapping(value = "/subtract")
-    public Calculation subNumbers(@RequestBody Calculation calculation){
-        double result = calculation.getOperand1() - calculation.getOperand2();
-        calculation.setResult(result);
-        return calculatorService.saveCalculation(calculation);
+    public Calculation subNumbers(@RequestParam double a, @RequestParam double b){
+        double result = a - b;
+        return saveCalculation(a + " - " + b, result);
     }
 
     // POST request to multiple numbers
     @PostMapping(value = "/multiply")
-    public Calculation mulNumbers(@RequestBody Calculation calculation){
-        double result = calculation.getOperand1() * calculation.getOperand2();
-        calculation.setResult(result);
-        return calculatorService.saveCalculation(calculation);
+    public Calculation mulNumbers(@RequestParam double a, @RequestParam double b){
+        double result = a * b;
+        return saveCalculation(a + " * " + b, result);
     }
 
     // POST request to divide numbers
     @PostMapping("/divide")
-    public Calculation divNumbers(@RequestBody Calculation calculation) {
+    public Calculation divNumbers(@RequestParam double a, @RequestParam double b) {
         //check for non 0 denominator as division by 0 is not possible
-        if (calculation.getOperand2() == 0) {
+        if (b == 0) {
             throw new ArithmeticException("Division by zero is not allowed"); 
         }
-        double result = calculation.getOperand1() / calculation.getOperand2();
-        calculation.setResult(result);
-        return calculatorService.saveCalculation(calculation);
+        double result = a / b;
+        return saveCalculation(a + " / " + b, result);
     }
 
     // GET request to view previous calculations

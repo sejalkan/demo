@@ -25,7 +25,8 @@ public class CalculatorService {
     }
 
     //save function to save caculation in H2 database
-    public Calculation saveCalculation(Calculation calculation) {
+    public Calculation saveCalculation(String operation, double result) {
+        Calculation calculation = new Calculation(operation, result);
         return calculatorRepository.save(calculation);
     }
 }
