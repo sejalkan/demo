@@ -70,6 +70,8 @@ class CalculatorControllerTest {
         e.printStackTrace();
     }
     }
+
+
     @Test
     void testSubtractNumbers() throws Exception {
     try{
@@ -87,6 +89,8 @@ class CalculatorControllerTest {
         e.printStackTrace();
     }
     }
+
+
     @Test
     void testMulNumbers() throws Exception {
     try{
@@ -100,12 +104,10 @@ class CalculatorControllerTest {
                 .andExpect(content().json("{'id': 1, 'operation':'5 * 3','result':15.0}"));
 
         verify(calculatorService, times(1)).saveCalculation("5 * 3", 8.0);
-    }catch (Exception e) {
-        e.printStackTrace();
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
     }
-    }
-
-
 
     @Test
     void testGetHistory() throws Exception {

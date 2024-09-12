@@ -2,6 +2,9 @@ package com.example.myDemo.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import com.example.myDemo.exception.CalculationException;
+import com.example.myDemo.exception.InvalidOperationException;
 import com.example.myDemo.model.Calculation;
 import com.example.myDemo.service.CalculatorService;
 
@@ -31,22 +34,34 @@ public class CalculatorController {
     // POST request to add numbers
     @PostMapping("/add")
     public Calculation addNumbers(@RequestParam double a, @RequestParam double b) {
+        try{
         double result = a + b;
         return saveCalculation(a + " + " + b, result);
+        }catch (Exception e) {
+            throw new CalculationException("Failed to add numbers");
+        }
     }
 
     // POST request to subtract numbers
     @PostMapping(value = "/subtract")
     public Calculation subNumbers(@RequestParam double a, @RequestParam double b){
+        try{
         double result = a - b;
         return saveCalculation(a + " - " + b, result);
+        }catch (Exception e) {
+            throw new CalculationException("Failed to subtract numbers");
+        }
     }
 
     // POST request to multiple numbers
     @PostMapping(value = "/multiply")
     public Calculation mulNumbers(@RequestParam double a, @RequestParam double b){
+        try{
         double result = a * b;
         return saveCalculation(a + " * " + b, result);
+        }catch (Exception e) {
+            throw new CalculationException("Failed to multiply numbers");
+        }
     }
 
     // POST request to divide numbers
@@ -54,10 +69,14 @@ public class CalculatorController {
     public Calculation divNumbers(@RequestParam double a, @RequestParam double b) {
         //check for non 0 denominator as division by 0 is not possible
         if (b == 0) {
-            throw new ArithmeticException("Division by zero is not allowed"); 
+            throw new InvalidOperationException("Division by zero is not allowed"); 
         }
+        try{
         double result = a / b;
         return saveCalculation(a + " / " + b, result);
+        }catch (Exception e) {
+            throw new CalculationException("Failed to divide numbers");
+        }
     }
 
     // GET request to view previous calculations
