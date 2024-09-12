@@ -6,6 +6,10 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 
+/**
+ * This class is a controller advice class that manages exceptions thrown by 
+ * CalculatorController.java class within the application.
+ */
 @ControllerAdvice
 public class GlobalExceptionHandler {
 

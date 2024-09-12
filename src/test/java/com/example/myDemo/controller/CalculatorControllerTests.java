@@ -20,6 +20,9 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+/**
+ * This class tests all API calls (requests and responses) by testing all methods in CalculatorController.java.
+ */
 class CalculatorControllerTest {
 
     private MockMvc mockMvc;

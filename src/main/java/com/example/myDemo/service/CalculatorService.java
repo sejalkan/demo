@@ -6,7 +6,9 @@ import org.springframework.stereotype.Service;
 import com.example.myDemo.model.Calculation;
 import com.example.myDemo.repository.CalculatorRepository;
 
-// Service class for managing calculation model (entity)
+/**
+ * The service class contain business logic and application functionality.
+ */
 @Service
 @ComponentScan(basePackages = {"com.example.myDemo.service"})
 public class CalculatorService {

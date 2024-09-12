@@ -31,7 +31,15 @@ public class CalculatorController {
         return "POST request received";
     }
 
-    // POST request to add numbers
+
+    /**
+     * This method generates a POST API request to add two numbers.
+     * @param a value is part of url.
+     * @param b value is part of url.
+     * @return saves the calculated result in the database.
+     * Response is a json output contain ID, operation and results.
+
+     */
     @PostMapping("/add")
     public Calculation addNumbers(@RequestParam double a, @RequestParam double b) {
         try{
@@ -42,7 +50,13 @@ public class CalculatorController {
         }
     }
 
-    // POST request to subtract numbers
+    /**
+     * This method generates a POST API request to subtract two numbers.
+     * @param a is part of url.
+     * @param b is part of url.
+     * @return saves the calculated result in the database.
+     * Response is a json output contain ID, operation and results.
+     */
     @PostMapping(value = "/subtract")
     public Calculation subNumbers(@RequestParam double a, @RequestParam double b){
         try{
@@ -53,7 +67,13 @@ public class CalculatorController {
         }
     }
 
-    // POST request to multiple numbers
+    /**
+     * This method generates a POST API request to multiply two numbers.
+     * @param a is a part of url
+     * @param b is a part of url
+     * @return saves the calculated result in the database.
+     * Response is a json output contain ID, operation and results.
+     */
     @PostMapping(value = "/multiply")
     public Calculation mulNumbers(@RequestParam double a, @RequestParam double b){
         try{
@@ -64,7 +84,14 @@ public class CalculatorController {
         }
     }
 
-    // POST request to divide numbers
+    /**
+     * This method generates a POST API request to divide two numbers.
+     * @param a is a part of url.
+     * @param b is part of url.
+     * @return saves the calculated results in the database.
+     * if b = 0, exception is thrown.
+     * Response is a json output contain ID, operation and results.
+     */
     @PostMapping("/divide")
     public Calculation divNumbers(@RequestParam double a, @RequestParam double b) {
         //check for non 0 denominator as division by 0 is not possible
@@ -79,7 +106,10 @@ public class CalculatorController {
         }
     }
 
-    // GET request to view previous calculations
+    /**
+     * This methods generest GET API request to print all saved calculations 
+     * @return prints calculation in a json format.
+     */
     @GetMapping("/history")
     public Iterable<Calculation> getHistory() {
         return calculatorService.getAllCalculations();

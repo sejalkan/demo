@@ -6,6 +6,9 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 
+/**
+ * CalculatorApplication runs the application server.
+ */
 @SpringBootApplication
 @EntityScan(basePackages = "com.example.myDemo.model")
 @EnableJpaRepositories(basePackages = "com.example.myDemo.repository")

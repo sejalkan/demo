@@ -24,7 +24,9 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 @ExtendWith(MockitoExtension.class)
 
-// Main class
+/**
+ * This class tests the business logic and functionality of the application by calling CalculationService.java methods.
+ */
 class CalculatorServiceTests {
 
     @Mock
